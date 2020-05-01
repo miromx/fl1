@@ -11,7 +11,15 @@ class MyBody extends StatelessWidget {
           children: <Widget>[
             Text('Hello'),
             FlatButton(
-              onPressed: (){},
+              onPressed: () async {
+                const url = 'https://cadfem-cis.ru';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                }
+                else {
+                  throw 'can\'t do this at $url';
+                }
+              },
               child: Text("Click me"),
               color: Colors.red,
               textColor: Colors.white,
